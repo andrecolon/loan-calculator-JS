@@ -7,7 +7,7 @@ document
 function calculateResults(e) {
   console.log("Calculating...");
   const amount = document.getElementById("amount");
-  console.log(amount.target.value);
+  console.log(amount).value;
   const interest = getElementById("interest");
   const years = document.getElementById("years");
   const monthlyPayment = document.getElementById("monthly-payment");
