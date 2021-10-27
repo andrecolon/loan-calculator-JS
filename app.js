@@ -7,8 +7,8 @@ document
 function calculateResults(e) {
   console.log("Calculating...");
   const amount = document.getElementById("amount");
-  console.log(amount).value;
-  const interest = getElementById("interest");
+  // //console.log(amount).value;
+  //const interest = getElementById("interest");
   const years = document.getElementById("years");
   const monthlyPayment = document.getElementById("monthly-payment");
   const totalPayment = document.getElementById("total-payment");
@@ -18,7 +18,7 @@ function calculateResults(e) {
   const calcInterest = parseFloat(interest.value) / 100 / 12;
   const calcPayments = parseFloat(years.value) * 12;
 
-  // Compute monthly payments
+  // // Compute monthly payments
 
   const x = Math.pow(1 + calcInterest, calcPayments);
   const monthly = (principal * x * calcInterest) / (x - 1);
@@ -28,8 +28,20 @@ function calculateResults(e) {
     totalPayment.value = (monthly * calcPayments).toFixed(2);
     totalInterest.value = (monthly * calcPayments - principal).toFixed(2);
   } else {
-    console.log("Please check your numbers");
+    showError("Please check your numbers");
   }
 
   e.preventDefault();
+}
+
+// Error handling
+
+function showError(error) {
+  const errorDiv = document.createElement("div");
+  const card = document.querySelector(".card");
+  const heading = document.querySelector(".heading");
+
+  errorDiv.className = "alert alert-danger";
+  errorDiv.appendChild(document.createTextNode(error));
+  card.insertBefore(errorDiv, heading);
 }
